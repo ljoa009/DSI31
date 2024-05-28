@@ -109,36 +109,32 @@ $pdf->SetXY(16.5,5);
 $pdf->Cell(0,0,'1 2 3 4 5 6 7 8 A B',0,1,'L');
 
 $pdf->SetTextColor(0,0,0);
-$pdf->SetFont('Arial','B',3);
+$pdf->SetFont('Arial','B',4);
 $pdf->SetXY(45,9);
 $pdf->Cell(0,0,'Domicilio',0,1,'L');
 $pdf->SetFont('Arial','B',5);
-$pdf->SetXY(40,10.5);
-$pdf->Cell(0,0,'TZELTALES',0,1,'L');
-$pdf->SetXY(48,13);
-$pdf->Cell(0,0,'SN',0,1,'L');
-$pdf->SetXY(40,14);
-$pdf->Cell(0,0,'QUERETARO',0,1,'L');
-$pdf->SetXY(40,16);
-$pdf->Cell(0,0,'QUERETARO',0,1,'L');
+$pdf->SetXY(40,12);
+$pdf->Cell(0,0,'TEPOZAN',0,1,'L'); //Lo agrega el usuario en el formulario
+$pdf->SetXY(48,14);
+$pdf->Cell(0,0,'624',0,1,'L'); //Lo agrega el usuario en el formulario
+$pdf->SetXY(32,16);
+$pdf->Cell(0,0,'FRACC. DEL BOSQUE',0,1,'L'); //Lo agrega el usuario en el formulario
 $pdf->SetXY(40,18);
-$pdf->Cell(0,0,'CP76116',0,1,'L');
+$pdf->Cell(0,0,'C.P. 76147',0,1,'L'); //Lo agrega el usuario en el formulario
 $pdf->SetXY(40,20);
 $pdf->Cell(0,0,'QUERETARO',0,1,'L'); 
 $pdf->SetXY(40,22);
-
 $pdf->AddPage();
 
 //$pdf->Image('carros.png',8,5,10,10);
 $pdf->Cell(0,5,'Restricciones',0,1,1,'L');
-$pdf->Cell(0,5,'9NINGUNA',0,1,1,'L');
+$pdf->Cell(0,5,'9NINGUNA',0,1,1,'L'); //Lo agrega el usuario en el formulario
 $pdf->Cell(0,5,'Grupo Sanguineo',0,1,1,'L');
-$pdf->Cell(0,5,'O+',0,1,1,'L');
+$pdf->Cell(0,5,'O+',0,1,1,'L'); //Lo agrega el usuario en el formulario
 $pdf->Cell(0,5,'DonadordeOrganos',0,1,1,'L');
-$pdf->Cell(0,5,'SI',0,1,1,'L');
-$pdf->Cell(0,5,'NumerodeEmergencias',0,1,1,'L');
-$pdf->Cell(0,5,'12345678AB',0,1,1,'L');
-$pdf->Cell(0,5,'000-442-356-1345',0,1,1,'L');
+$pdf->Cell(0,5,'SI',0,1,1,'L'); //Lo agrega el usuario en el formulario
+$pdf->Cell(0,5,'Número de Emergencias',0,1,1,'L');
+$pdf->Cell(0,5,'000-442-356-1345',0,1,1,'L'); //Lo agrega el usuario en el formulario
 
 //$pdf->Image('firma2.png',8,5,10,10);
 $pdf->Cell(0,5,'MTRO. EN GPA MIGUEL ANGEL CONTRERAS ALVAREZ',0,1,1,'L');
