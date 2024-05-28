@@ -1,4 +1,24 @@
-
+<html> 
+    <head>
+        <link rel="stylesheet" href="CSS/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <form action="C_Centros_Verificacion.php">
+    <label>Atributo que desea buscar: </label>
+        <select id="Atributo" name="Atributo">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Id">ID</option>
+            <option value="RazonSocial">Razón Social</option>
+            <option value="Nombre">Nombre</option>
+            <option value="Telefono">Teléfono</option>
+            <option value="Direccion">Dirección</option>
+        </select>
+        <br>
+    <label>Ingrese el valor del atributo: </label>
+    <input type = "text" name = "Valor" id = "Valor">
+    <input type="submit">
+    </form>
 
 
 <?php
