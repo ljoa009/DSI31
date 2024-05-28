@@ -1,0 +1,79 @@
+/* Estilo para los títulos */
+h1, h2, h3, h4, h5, h6 {
+  color: #333;
+  text-align: center; 
+}
+
+/* Estilo para el cuerpo del formulario */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+  }
+  
+  /* Estilo para los campos de entrada */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  input[type="file"],
+  input[type="time"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total del input */
+  }
+
+  /* Estilo para los elementos de tipo radio */
+  input[type="radio"] {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  }
+
+  /* Estilo para el botón de enviar */
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+  }
+  
+  .button{
+    background-color: #4caf50; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espacio interior (arriba y abajo, izquierda y derecha) */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar el ratón */
+    display: block; /* Mostrar como elemento de bloque para poder aplicar margen automático */
+    margin: auto; /* Centrar horizontalmente */
+  }
+
+  .message-container {
+    text-align: center; /* Centrar el contenido horizontalmente */
+    margin-top: 20px; /* Espacio superior para separar el mensaje de otros elementos */
+  }
+
+  /* Estilo para los mensajes de error */
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  
+  /* Estilo para el mensaje de éxito */
+  .success {
+    color: green;
+    font-size: 12px;
+  }
