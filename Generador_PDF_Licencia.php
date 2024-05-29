@@ -1,147 +1,188 @@
 <?php
 require('fpdf.php');
 
-$pdf = new FPDF('p','mm',array(54,86));
+require('Controlador.php');
 
-$pdf->SetFont('Arial','',5);
+$conexion = Conectar();
+
+// Consulta a la base de datos para obtener los datos de las licencias
+$sql = "SELECT * FROM vistalicencia";
+$resultset = Ejecutar($conexion, $sql);
+
+$pdf = new FPDF('p','mm',array(54,85.6));
 $pdf->AddPage();
-
-$pdf->SetAutoPageBreak(true, 0);
-
+$pdf->SetFont('Arial', '', 3);
+$pdf->SetAutoPageBreak(false, 0.3);
 $pdf->Image('Imagenes/Fondo.png',0,0,60,90);
 
-//Cabezera
-        $pdf->Image('Imagenes/EscudoQro.png',5,3,10,null);
-        $pdf->SetXY(18,6);
-        $pdf->Cell(0,0,'Estados Unidos Mexicanos',0,'l',1,'',false);
-        $pdf->SetXY(18,8);
-        $pdf->SetFont('Arial','',4);
-        $pdf->Cell(0,0,'Poder Ejecutivo del Estado de Queretaro',0,'l',2,'',false);
-        $pdf->SetXY(18,10.5);
-        $pdf->SetFont('Arial','B',4);
-        $pdf->Cell(0,0,'Secretaria de Seguridad Ciudadana',0,'l',1,'',false);
-        $pdf->SetXY(18,12.3);
-        $pdf->SetFont('Arial','B',5);
-        $pdf->Cell(0,0,'Licencia para Conducir',0,'l',1,'',false);
-
-//Persona
-        $pdf->Image('Imagenes/Foto.png',27,17,23,23);
-        $pdf->SetFont('Arial','B',3.5);
-        $pdf->SetXY(15.5,31.5);
-        $pdf->Cell(0,0,'No de Licencia',0,1,'r');
-        $pdf->SetFont('Arial','B',7.5);
-        $pdf->SetTextColor(255,0,0);
-        $pdf->SetXY(9.5,35.4);
-        $pdf->Cell(0,0,'Q119100-07',0,1,'r');
-        $pdf->SetTextColor(0,0,0);
-        $pdf->SetFont('Arial','B',4);
-        $pdf->SetXY(12,39);
-        $pdf->Cell(0,0,'AUTOMOVILISTA',0,1,'r');
-       
-//Nombre
-        $pdf->SetFont('Arial','',3.5); 
-        $pdf->SetXY(44.5,42);  
-        $pdf->Cell(0,0,'Nombre',0,1,'L');
-        $pdf->SetFont('Arial','',8);
-        $pdf->SetXY(37,44.5);
-        $pdf->Cell(0,0,'OLALDE',0,1,'L');
-        $pdf->SetXY(41.7,47.5);
-        $pdf->Cell(0,0,'ABARCA',0,1,'L');
-        $pdf->SetFont('Arial','B',8);
-        $pdf->SetXY(38.7,50.5);
-        $pdf->Cell(0,0,'LUIS JULIAN',0,1,'L');
-        $pdf->SetFont('Arial','B',3.5);
-        $pdf->SetXY(40.2,52.4);
-        $pdf->Cell(0,0,'Observaciones',0,1,'L');
-
-//fechas
-        $pdf->SetXY(3,54);
-        $pdf->Cell(0,0,'Fecha de Nacimiento',0,1,'L');
-        $pdf->SetXY(3,57.5);
-        $pdf->Cell(0,0,'Fecha de Expedicion',0,1,'L');
-        $pdf->SetXY(3,61);
-        $pdf->Cell(0,0,'Valida hasta',0,1,'L');
-        $pdf->SetXY(3,64.5);
-        $pdf->Cell(0,0,'ANTIGUEDAD',0,1,'L');
-
-        $pdf->SetFont('Arial','',5);
-        $pdf->SetXY(3,55.5);
-        $pdf->Cell(0,0,'24/09/2003',0,1,'L');
-        $pdf->SetXY(3,59);
-        $pdf->Cell(0,0,'10/04/2024',0,1,'L');
-        $pdf->SetXY(3,66);
-        $pdf->Cell(0,0,'10',0,1,'L');
-        $pdf->SetFont('Arial','B',5);
-        $pdf->SetXY(3,62.5);
-        $pdf->Cell(0,0,'10/04/2030',0,1,'L');
-       
-//Pie
-        $pdf->Image('Imagenes/Cuadro.png',3,74,10,10);
-        $pdf->SetXY(25,70);
-        $pdf->SetFont('Arial','B',3);
-        $pdf->Cell(0,0,'Firma',0,1,'L');
-        $pdf->SetXY(5,79);
-        $pdf->SetFont('Arial','B',15);
-        $pdf->Cell(0,0,'A',0,1,'L');
-
-        $pdf->SetXY(15,81);
-        $pdf->SetFont('Arial','',3);
-        $pdf->Cell(0,0,'AUTORIZO PARA QUE LA PRESENTE SEA',0,1,'L');
-        $pdf->SetXY(15,82.4);
-        $pdf->Cell(0,0,'RECABADA COMO GARANTIA DE INFRACCION',0,1,'L');
-        $pdf->Image('Imagenes/Firma.png',24,72,7,7);
-        //$pdf->Image('simbolo2.png',42,76,13,9);
-
-//DETRÁS
-
-$pdf->AddPage();
-
-$pdf->SetAutoPageBreak(true, 0);
-
-$pdf->Image('Imagenes/Fondo.png',0,0,60,90);
-//$pdf->Image('emergencias.png',2,2.3,7.5,0);
-//$pdf->Image('denuncia.jpg',44,2.3,7.5,0);
-//$pdf->Image('ovalo.png',11.5,2.5,30,5);
-
-$pdf->SetTextColor(255,255,255);
-$pdf->SetFont('Arial','B',6);
-$pdf->SetXY(16.5,5);
-$pdf->Cell(0,0,'1 2 3 4 5 6 7 8 A B',0,1,'L');
-
-$pdf->SetTextColor(0,0,0);
-$pdf->SetFont('Arial','B',4);
-$pdf->SetXY(45,9);
-$pdf->Cell(0,0,'Domicilio',0,1,'L');
+// Escribir información en la tarjeta
+$pdf->SetFont('Arial','B',8);
+$pdf->Text(12, 5, 'Estados Unidos Mexicanos');
 $pdf->SetFont('Arial','B',5);
-$pdf->SetXY(40,12);
-$pdf->Cell(0,0,'TEPOZAN',0,1,'L'); //Lo agrega el usuario en el formulario
-$pdf->SetXY(48,14);
-$pdf->Cell(0,0,'624',0,1,'L'); //Lo agrega el usuario en el formulario
-$pdf->SetXY(32,16);
-$pdf->Cell(0,0,'FRACC. DEL BOSQUE',0,1,'L'); //Lo agrega el usuario en el formulario
-$pdf->SetXY(40,18);
-$pdf->Cell(0,0,'C.P. 76147',0,1,'L'); //Lo agrega el usuario en el formulario
-$pdf->SetXY(40,20);
-$pdf->Cell(0,0,'QUERETARO',0,1,'L'); 
-$pdf->SetXY(40,22);
-$pdf->AddPage();
+$pdf->Text(12, 7, 'Poder Ejecutivo del Estado de Queretaro');
+$pdf->SetFont('Arial','',5);
+$pdf->Text(12, 9, 'SECRETARIA DE');
+$pdf->SetFont('Arial','B',5);
+$pdf->Text(27, 9, 'SEGURIDAD CIUDADANA');
+$pdf->SetFont('Arial','B',5);
+$pdf->Text(13, 12, 'LICENCIA PARA CONDUCIR');
+$pdf->Ln(8);
 
-//$pdf->Image('carros.png',8,5,10,10);
-$pdf->Cell(0,5,'Restricciones',0,1,1,'L');
-$pdf->Cell(0,5,'9NINGUNA',0,1,1,'L'); //Lo agrega el usuario en el formulario
-$pdf->Cell(0,5,'Grupo Sanguineo',0,1,1,'L');
-$pdf->Cell(0,5,'O+',0,1,1,'L'); //Lo agrega el usuario en el formulario
-$pdf->Cell(0,5,'DonadordeOrganos',0,1,1,'L');
-$pdf->Cell(0,5,'SI',0,1,1,'L'); //Lo agrega el usuario en el formulario
-$pdf->Cell(0,5,'Número de Emergencias',0,1,1,'L');
-$pdf->Cell(0,5,'000-442-356-1345',0,1,1,'L'); //Lo agrega el usuario en el formulario
+// Iterar sobre los resultados y generar las licencias
+if ($resultset->num_rows > 0) {
+    while($row = $resultset->fetch_assoc()) {
+        $pdf->Image('Imagenes/EscudoQro.png', 3, 2, 7, 0);
+        $pdf->Image('Imagenes/Foto.png',30, 13, 23, 0);
+        $pdf->SetFont('Arial','',3);
+        $pdf->SetXY(10,26);
+        $pdf->Cell(19, 3, 'No. de Licencia', 0, 1, 'R');
+        $pdf->SetFont('Arial','',7);
+        $pdf->SetTextColor(255, 0, 0);
+        $pdf->Cell(19, 3, $row['NoLicencia'], 0, 1, 'R');
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->Ln(6);
+        $pdf->SetFont('Arial','',4);
+        $pdf->Cell(42, 3, 'Nombre', 0, 1, 'R');
+        $pdf->SetFont('Arial','B',7);
+        $pdf->Cell(42, 3, $row['ApellidoConductor'], 0, 1, 'R');
+        $pdf->SetFont('Arial','B',7);
+        $pdf->Cell(42, 3, $row['NombreConductor'], 0, 1, 'R');
+        $pdf->SetFont('Arial','',4);
+        $pdf->Cell(42, 3, 'Observaciones ', 0, 1, 'R');
+        $pdf->SetFont('Arial','B',4);
+        $pdf->Cell(42, 3, $row['Observaciones'], 0, 1, 'R');
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetXY(2,45);
+        $pdf->SetFont('Arial','',4);
+        $pdf->Cell(0, 1, 'Fecha de Nacimiento', 0, 1);
+        $pdf->SetX(2);
+        $pdf->SetFont('Arial','B',4);
+        $pdf->Cell(0, 3,  $row['FechaNac'], 0, 1);
+        $pdf->SetX(2);
+        $pdf->SetFont('Arial','',4);
+        $pdf->Cell(0, 1, 'Fecha de Expedicion', 0, 2);
+        $pdf->SetX(2);
+        $pdf->SetFont('Arial','B',4);
+        $pdf->Cell(0, 3, $row['FechaExp'], 0, 1);
+        $pdf->SetX(2); 
+        $pdf->SetFont('Arial','',4);       
+        $pdf->Cell(0, 1, 'Valida hasta', 0, 1);
+        $pdf->SetX(2);
+        $pdf->SetFont('Arial','B',4);
+        $pdf->Cell(0, 3, $row['Vigencia'], 0, 1);
+        $pdf->SetX(2);
+        $pdf->SetFont('Arial','',4);
+        $pdf->Cell(0, 1, 'Antiguedad', 0, 1);
+        $pdf->SetX(2);
+        $pdf->SetFont('Arial','B',4);
+        $pdf->Cell(0, 3, $row['Antigüedad'], 0, 1);
+        $pdf->SetX(5);
+        $pdf->SetFont('Arial','',4);
+        $pdf->Cell(0, 1, 'Firma', 0, 1);
+        $pdf->SetX(5);
+        $pdf->SetFont('Arial','B',4);
 
-//$pdf->Image('firma2.png',8,5,10,10);
-$pdf->Cell(0,5,'MTRO. EN GPA MIGUEL ANGEL CONTRERAS ALVAREZ',0,1,1,'L');
-$pdf->Cell(0,5,'SECRETARIA DE SEGURIDAD CIUDADANA',0,1,1,'L');
-$pdf->Cell(0,5,'Fundamento Legal',0,1,1,'L');
-$pdf->Cell(0,5,'Articulo 19 seccion',0,1,1,'L');
-//$pdf->Image('escudo2.jpg',8,5,10,10);
+        // Cargar imagen de la firma desde la base de datos
+        if (!empty($row['Firma'])) {
+                $pdf->Image($row['Firma'], 5, 63, 7, 0);
+            } else {
+                $pdf->Cell(0, 3, 'Sin firma', 0, 1);
+            }
 
+        $pdf->SetFont('Arial','',3);
+        $pdf->SetX(5);
+        $pdf->SetFont('Arial','B',2);
+        $pdf->Ln(6);
+        $pdf->SetX(5);
+        $pdf->Cell(6, 1, 'Autorizo para que la presente', 0, 1, 'C');
+        $pdf->SetX(5);
+        $pdf->Cell(6, 1, 'sea recabada como garantia', 0, 1, 'C');
+        $pdf->SetX(5);
+        $pdf->Cell(6, 1, 'de infraccion', 0, 1, 'C');
+        $pdf->Ln(2);
+        // Establecer el color de fondo amarillo
+        $pdf->SetFillColor(255, 255, 0);
+        // Dibujar un rectángulo con fondo amarillo para el texto
+        $pdf->Rect(3, 76, 6, 6, 'F');
+        // Colocar el texto encima del rectángulo
+        $pdf->SetFont('Arial','B',7);
+        $pdf->SetXY(4,77.5);
+        $pdf->Cell(3, 3, $row['Clase'], 0, 1);
+        // Agregar pagina para la parte trasera de la licencia
+        $pdf->AddPage();
+        $pdf->Image('Imagenes/Fondo.png',0,0,60,90);
+
+        // Inicio de la parte trasera 
+        $pdf->Image('Imagenes/Emergencias.png', 30, 3, 8, 0);
+        $pdf->Image('Imagenes/089.png', 40, 3, 10, 0);
+        $pdf->Ln(4);
+        //Datos de la parte trasera 
+        $pdf->SetFont('Arial','B',4);  
+        $pdf->SetX(42);     
+        $pdf->Cell(10, 2, 'Domicilio', 0, 1, 'R');
+        $pdf->SetFont('Arial','',4);  
+        $pdf->SetX(42);  
+        $pdf->Cell(10, 2, $row['NombreCalle'], 0, 1, 'R');
+        $pdf->SetX(42);  
+        $pdf->Cell(10, 2, 'Ext. ' . $row['Numero'] . ' Int. ' . $row['Numero'], 0, 1, 'R');
+        $pdf->SetX(42);  
+        $pdf->Cell(10, 2, 'Col. ' . $row['Colonia'], 0, 1, 'R');
+        $pdf->SetX(42);  
+        $pdf->Cell(10, 2, 'C.P. ' . $row['CodigoPostal'] . ' ' . $row['Estado'], 0, 1, 'R');
+        $pdf->Ln(4);
+
+        $pdf->SetX(42);
+        $pdf->SetFont('Arial','',4);
+        $pdf->Cell(10, 3, 'Grupo Sanguineo', 0, 1, 'R');
+        $pdf->SetX(42);
+        $pdf->SetFont('Arial','B',4);
+        $pdf->Cell(10, 2, $row['GrupoSang'], 0, 1, 'R');
+        $pdf->SetX(42);
+        $pdf->SetFont('Arial','',4);
+        $pdf->Cell(10, 3, 'Donador de Organos', 0, 1, 'R');
+        $pdf->SetX(42);
+        $pdf->SetFont('Arial','B',4);
+        $pdf->Cell(10, 2, $row['Donante'], 0, 1, 'R');
+        $pdf->SetX(42);
+        $pdf->SetFont('Arial','',4);
+        $pdf->Cell(10, 3, 'Numero de Emergencias', 0, 1, 'R');
+        $pdf->SetX(42);
+        $pdf->SetFont('Arial','B',4);
+        $pdf->Cell(10, 2, $row['NoEmergencia'], 0, 1, 'R');
+        $pdf->Ln(4);
+        $pdf->SetX(3);
+        $pdf->SetFont('Arial','',3);
+        $pdf->Cell(10, 2, 'Fundamento legal', 0, 1);
+        $pdf->SetX(3);
+
+        // Texto del párrafo
+        $texto = "Por cumplir las evaluaciones y requisitos establecidos en los artículos 139 y 140 del Reglamento de la Ley de Tránsito para el Estado de Querétaro y, en ejercicio de las facultades que me confieren los artículos 33, fracción VII de la Ley Orgánica del Poder Ejecutivo del Estado de Querétaro, así como 12, fracción XV de la Ley de Tránsito para el Estado de Querétaro, expido la presente licencia de conducir, que autoriza al titular la";
+
+        // Ancho y altura de la celda
+        $ancho_celda = 49;
+        $altura_celda = 2;
+
+        // Imprimir el párrafo en la celda
+        $pdf->SetFont('Arial','',3);
+        $pdf->MultiCell($ancho_celda, $altura_celda, utf8_decode($texto));
+        $pdf->Image("Imagenes/QroJuntos.png", 28, 72, 20, 0);
+        $pdf->Image("Imagenes/SDSC.png", 7, 71, 20, 0);
+        $pdf->Image("Imagenes/Firma.png", 21, 60, 12, 0);
+        $pdf->Ln(8);                                                                                        
+        $pdf->SetX(18);
+        $pdf->SetFont('Arial','',3);
+        $pdf->Cell(20,1, 'CMTE. GIOVANI ELIAS PEREZ HERNANDEZ', 0, 1, 'C');
+        $pdf->SetX(18);
+        $pdf->Cell(20,1, 'SECRETARIO DE SEGURIDAD CIUDADANA', 0, 1, 'C');
+
+        // Agregar un salto de línea entre cada licencia
+        $pdf->Ln(3);
+    }
+} else {
+    $pdf->Cell(0, 3, 'No se encontraron resultados', 0, 1);
+}
+
+// Cerrar conexión y generar el PDF
+Desconectar($conexion);
 $pdf->Output();
 ?>

@@ -86,12 +86,10 @@ if(isset($_POST['IdLicencias'])){
         <label> Clase: </label>
         <select id="Clase" name="Clase">
             <option value="" disabled selected>Selecciona una opción</option>
-            <option value="A" <?php if($Fila[7] == "A") echo "selected"; ?>>Tipo A - Motocicletas</option>
-            <option value="B" <?php if($Fila[7] == "B") echo "selected"; ?>>Tipo B - Automóviles particulares</option>
-            <option value="C" <?php if($Fila[7] == "C") echo "selected"; ?>>Tipo C - Camiones</option>
-            <option value="D" <?php if($Fila[7] == "D") echo "selected"; ?>>Tipo D - Transporte público</option>
-            <option value="E" <?php if($Fila[7] == "E") echo "selected"; ?>>Tipo E - Escolares</option>
-            <option value="F" <?php if($Fila[7] == "F") echo "selected"; ?>>Tipo F - Ferrocarriles</option>
+            <option value="A" <?php if($Fila[7] == "M") echo "selected"; ?>>Tipo M - Motocicletas</option>
+            <option value="B" <?php if($Fila[7] == "A") echo "selected"; ?>>Tipo A - Automóviles particulares</option>
+            <option value="C" <?php if($Fila[7] == "C") echo "selected"; ?>>Tipo C - Chofer</option>
+            <option value="E" <?php if($Fila[7] == "E") echo "selected"; ?>>Tipo E - Especiales</option>
         </select> 
         <label> Grupo Sanguíneo: </label>
         <select id="GrupoSanguineo" name="GrupoSanguineo">
