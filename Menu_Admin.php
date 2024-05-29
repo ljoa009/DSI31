@@ -76,100 +76,100 @@
             <li>
                 <a href="">Centros de Verificación</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Centros_Verificacion.html">Insertar</a></li>
+                    <li><a href="F_Centros_Verificacion.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Centros_Verificacion.php">Consultar Datos</a></li>
-                    <li><a href="FD_Centros_Verificacion.html">Eliminar</a></li>
+                    <li><a href="FD_Centros_Verificacion.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Conductores</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Conductores.html">Insertar</a></li>
+                    <li><a href="F_Conductores.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Conductores.php">Consultar Datos</a></li>
-                    <li><a href="FD_Conductores.html">Eliminar</a></li>
+                    <li><a href="FD_Conductores.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Direcciones</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Direcciones.html">Insertar</a></li>
+                    <li><a href="F_Direcciones.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Direcciones.php">Consultar Datos</a></li>
-                    <li><a href="FD_Direcciones.html">Eliminar</a></li>
+                    <li><a href="FD_Direcciones.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Licencias</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Licencias.html">Insertar</a></li>
+                    <li><a href="F_Licencias.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Licencias.php">Consultar Datos</a></li>
-                    <li><a href="FD_Licencias.html">Eliminar</a></li>
+                    <li><a href="FD_Licencias.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Multas</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Multas.html">Insertar</a></li>
+                    <li><a href="F_Multas.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Multas.php">Consultar Datos</a></li>
-                    <li><a href="FD_Multas.html">Eliminar</a></li>
+                    <li><a href="FD_Multas.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Oficiales</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Oficiales.html">Insertar</a></li>
+                    <li><a href="F_Oficiales.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Oficiales.php">Consultar Datos</a></li>
-                    <li><a href="FD_Oficiales.html">Eliminar</a></li>
+                    <li><a href="FD_Oficiales.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Propietarios</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Propietarios.html">Insertar</a></li>
+                    <li><a href="F_Propietarios.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Propietarios.php">Consultar Datos</a></li>
-                    <li><a href="FD_Propietario.html">Eliminar</a></li>
+                    <li><a href="FD_Propietario.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Tarjetas de Circulación</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Tarjetas_Circulacion.html">Insertar</a></li>
+                    <li><a href="F_Tarjetas_Circulacion.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Tarjetas_Circulacion.php">Consultar Datos</a></li>
-                    <li><a href="FD_Tarjetas_Circulacion.html">Eliminar</a></li>
+                    <li><a href="FD_Tarjetas_Circulacion.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Tenencias</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Tenencias.html">Insertar</a></li>
+                    <li><a href="F_Tenencias.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Tenencias.php">Consultar Datos</a></li>
-                    <li><a href="FD_Tenencias.html">Eliminar</a></li>
+                    <li><a href="FD_Tenencias.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Vehículos</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Vehiculos.html">Insertar</a></li>
+                    <li><a href="F_Vehiculos.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Vehiculos.php">Consultar Datos</a></li>
-                    <li><a href="FD_Vehiculos.html">Eliminar</a></li>
+                    <li><a href="FD_Vehiculos.php">Eliminar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="">Verificaciones</a>
                 <ul class="sub-menu">
-                    <li><a href="F_Verificaciones.html">Insertar</a></li>
+                    <li><a href="F_Verificaciones.php">Insertar</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="C_Verificaciones.php">Consultar Datos</a></li>
-                    <li><a href="FD_Verificaciones.html">Eliminar</a></li>
+                    <li><a href="FD_Verificaciones.php">Eliminar</a></li>
                 </ul>
             </li>
         </ul>

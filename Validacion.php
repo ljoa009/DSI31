@@ -10,31 +10,34 @@
     //Validar si el Usuario Existe
     $Existe = mysqli_num_rows($ResultSet);
     if($Existe == 1){
-        print ("El Usuario Existe");
         $Fila = mysqli_fetch_row($ResultSet);
         if($Password == $Fila[1]){
-            print ("Contraseña Correcta");
             if($Fila[3] == 1){
-                print("Cuenta Activa");
                 if($Fila[4] == 0){
-                    print("Cuenta No Bloqueada");
-
-                    print("Entrar");
                     if($Fila[2] == 'U'){
-                        print("Entrar como Usuario");
+                        
+                        header('location: Menu_Usuario.html');
                     }else{
-                        print("Entrar como Administrador");
+
+                        header('location: Menu_Admin.html');
                     }
                 }else{
-                    print("Cuenta Bloqueada");
+                    echo "<script type='text/javascript'>alert('Cuenta Bloqueada');</script>";
                 }
             }else{
-                print("Cuenta Inactiva");
+                echo "<script type='text/javascript'>alert('Cuenta Inactiva');</script>";
             }
         }else{
-            print ("Contraseña Incorrecta");
+            echo "<script type='text/javascript'>alert('Tus datos de inicio son incorrectos');</script>";
         }
     }else{
-        print ("El Usuario NO Existe");
+        echo "<script type='text/javascript'>alert('Tus datos de inicio son incorrectos');</script>";
     }
+    echo "
+        <script type='text/javascript'>
+            setTimeout(function() {
+                window.location.href = 'Login.html';
+            }, 5);
+        </script>
+        ";
 ?>
