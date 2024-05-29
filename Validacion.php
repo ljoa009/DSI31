@@ -20,7 +20,7 @@
                     print("Cuenta No Bloqueada");
 
                     print("Entrar");
-                    if($Fila[2] == U){
+                    if($Fila[2] == 'U'){
                         print("Entrar como Usuario");
                     }else{
                         print("Entrar como Administrador");
