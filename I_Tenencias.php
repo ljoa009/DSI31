@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         $Transaccion = $_REQUEST['Transaccion'];
         $LineaCaptura = $_REQUEST['LineaCaptura'];

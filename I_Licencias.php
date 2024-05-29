@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         $NoLicencia = $_GET['NoLicencia'];
         $Categoria = $_GET['Categoria'];

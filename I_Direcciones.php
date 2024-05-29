@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         $NombreCalle = $_REQUEST['NombreCalle'];
         $Numero = $_REQUEST['Numero'];

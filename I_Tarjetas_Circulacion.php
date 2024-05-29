@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         $Folio = $_GET['Folio'];
         $Vigencia = $_GET['Vigencia'];

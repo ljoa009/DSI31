@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         $RazonSocial = $_POST['RazonSocial'];
         $Nombre = $_POST['Nombre'];

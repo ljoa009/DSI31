@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         $Nombre = $_REQUEST['Nombre'];
         $Apellido = $_REQUEST['Apellido'];

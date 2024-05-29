@@ -1,5 +1,5 @@
-
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         $Nombre=$_GET['Nombre'];
         $Apellido=$_GET['Apellido'];

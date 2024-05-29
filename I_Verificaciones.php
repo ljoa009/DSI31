@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         $Folio = $_POST['Folio'];
         $Fecha = $_POST['Fecha'];

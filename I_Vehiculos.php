@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         $NoSerie = $_POST['NoSerie'];
         $Placa = $_POST['Placa'];
