@@ -3,7 +3,7 @@
     $Servidor = "127.0.0.1";
     $Usuario = "root";
     $Password = "";
-    $BD = "controvehicularfinal";
+    $BD = "controlvehicularfinal";
     $Con = mysqli_connect($Servidor,$Usuario,$Password,$BD);
     return $Con;
   }
