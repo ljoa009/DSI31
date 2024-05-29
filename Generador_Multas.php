@@ -31,12 +31,12 @@ if ($resultset->num_rows > 0) {
         
         $pdf->Cell(0, 10, 'Conductor: ' . $row['ConductorNombre'] . ' ' . $row['ConductorApellido'], 0, 1);
         $pdf->Cell(0, 10, 'Licencia: ' . $row['NoLicencia'], 0, 1);
-        $pdf->Cell(0, 10, 'Domicilio: ' . $row['Domicilio'], 0, 1);
+        $pdf->Cell(0, 10, 'Domicilio: ' . $row['ConductorCalle'], 0, 1);
         $pdf->Ln(10);
         
         $pdf->Cell(0, 10, 'Vehículo: ' . $row['VehiculoMarca'] . ' ' . $row['VehiculoModelo'], 0, 1);
         $pdf->Cell(0, 10, 'Año: ' . $row['VehiculoAño'], 0, 1);
-        $pdf->Cell(0, 10, 'Placas: ' . $row['VehiculoPlacas'], 0, 1);
+        $pdf->Cell(0, 10, 'Placas: ' . $row['VehiculoPlaca'], 0, 1);
         $pdf->Ln(10);
         
         $pdf->Cell(0, 10, 'Motivo de la infracción: ' . $row['Motivo'], 0, 1);
