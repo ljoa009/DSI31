@@ -155,24 +155,29 @@ require('Controlador.php');
 $conexion = Conectar();
 
 // Consulta a la base de datos para obtener los datos de las multas
-$sql = "SELECT * FROM vistamulta";
+$sql = "SELECT * FROM vistamulta WHERE MultaId=3";
 $resultset = Ejecutar($conexion, $sql);
 
-$pdf = new FPDF('p','mm','A4');
+$pdf = new FPDF('P', 'mm', array(216,330));
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 8);
 $pdf->SetAutoPageBreak(true, 10);
 //$pdf->Image('Imagenes/FondoMulta.png',0,0,210,297);
 
+// Establecer el encabezado fuera del recuadro
+$pdf->SetFont('Arial','B',12);
+$pdf->Cell(0, 10, 'SECRETARIA DE SEGURIDAD CIUDADANA', 0, 1, 'C');
+$pdf->SetFont('Arial','',10);
+$pdf->Cell(0, 10, 'SUBSECRETARIA DE POLICIA ESTATAL', 0, 1, 'C');
+$pdf->Ln(20);
+
 // Iterar sobre los resultados y generar las multas
 if ($resultset->num_rows > 0) {
     while($row = $resultset->fetch_assoc()) {
-        $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(0, 10, 'SECRETARIA DE SEGURIDAD CIUDADANA', 0, 1, 'C');
-        $pdf->SetFont('Arial','',10);
-        $pdf->Cell(0, 10, 'SUBSECRETARIA DE POLICIA ESTATAL', 0, 1, 'C');
-        $pdf->Ln(10);
+        // Guardar la posición actual del Y
+        $startY = $pdf->GetY();
         
+        // Establecer los datos de la multa
         $pdf->SetFont('Arial','',10);
         $pdf->Cell(0, 10, 'Fecha: ' . $row['Fecha'], 0, 1);
         $pdf->Cell(0, 10, 'Hora: ' . $row['Hora'], 0, 1);
@@ -203,6 +208,19 @@ if ($resultset->num_rows > 0) {
         $pdf->Cell(0, 10, 'Clasificación de la boleta: ' . $row['ClasBoleta'], 0, 1);
         $pdf->Cell(0, 10, 'Observaciones del Conductor: ' . $row['ObsConductor'], 0, 1);
         $pdf->Ln(20);
+        
+        // Guardar la posición actual del Y después de imprimir los datos
+        $endY = $pdf->GetY();
+        
+        // Calcular la altura total de la celda con los datos
+        $cellHeight = $endY - $startY;
+        
+        // Generar el recuadro sin relleno alrededor de los datos
+        $pdf->SetY($startY);
+        $pdf->Cell(0, $cellHeight, '', 1, 1, 'C');
+        
+        // Ajustar la posición Y para evitar superposición con el siguiente elemento
+        $pdf->SetY($endY);
     }
 } else {
     $pdf->Cell(0, 10, 'No se encontraron resultados', 0, 1);
