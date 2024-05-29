@@ -4,7 +4,7 @@
 
     include ("Controlador.php");
     $Con = Conectar();
-    $SQL = "SELECT * FROM CUENTAS WHERE User_Name = '$User_Name';"
+    $SQL = "SELECT * FROM CUENTAS WHERE User_Name = '$User_Name';";
     $ResultSet = Ejecutar($Con, $SQL);
 
     //Validar si el Usuario Existe
