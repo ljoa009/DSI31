@@ -10,11 +10,6 @@
         print("Teléfono: ".$Telefono."<br>");
         print("Dirección: ".$Direccion."<br>");
 
-        $Servidor = "127.0.0.1";
-        $Usuario = "root";
-        $Password = "";
-        $BD = "controlvehicularfinal";
-
         $SQL = "INSERT INTO Centros_Verificacion (RazonSocial, Nombre, Telefono, Direccion)VALUES('$RazonSocial','$Nombre','$Telefono','$Direccion');";
     
         include("Controlador.php");
