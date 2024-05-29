@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         if($_SESSION['tipo'] == 'U'){
             header('location: Menu_Usuario.php');

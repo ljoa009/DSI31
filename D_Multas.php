@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION['user'])){
         //Obtener datos
         $IdMulta=$_POST['IdMulta'];
