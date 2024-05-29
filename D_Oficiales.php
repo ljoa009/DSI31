@@ -1,19 +1,23 @@
 <?php
-    //Obtener datos
-    $IdOficial=$_POST['IdOficial'];
+    if(isset($_SESSION['user'])){
+        //Obtener datos
+        $IdOficial=$_POST['IdOficial'];
 
-    //Formando instrucción SQL
-    $SQL= "DELETE FROM OFICIALES WHERE id ='$IdOficial'";
+        //Formando instrucción SQL
+        $SQL= "DELETE FROM OFICIALES WHERE id ='$IdOficial'";
 
-    //Enviar consulta al SMDB
-    include("Controlador.php");
-    $Con = Conectar();
-    $ResultSet = Ejecutar($Con, $SQL);
-    Desconectar($Con);
+        //Enviar consulta al SMDB
+        include("Controlador.php");
+        $Con = Conectar();
+        $ResultSet = Ejecutar($Con, $SQL);
+        Desconectar($Con);
 
-    if($ResultSet==1){
-        print("Registro Eliminado");
+        if($ResultSet==1){
+            print("Registro Eliminado");
+        }else{
+            print("Registro No Eliminado");
+        }
     }else{
-        print("Registro No Eliminado");
+        header('location: Login.php');
     }
 ?>

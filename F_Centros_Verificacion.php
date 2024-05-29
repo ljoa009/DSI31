@@ -1,3 +1,6 @@
+<?php
+    if(isset($_SESSION['user'])){
+?>
 <html>
     <html lang="es">
     <head>
@@ -21,3 +24,8 @@
         <input type="submit">
     </form>
 </html>
+<?php
+    }else{
+        header('location: Login.php');
+    }
+?>

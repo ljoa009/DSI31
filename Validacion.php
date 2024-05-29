@@ -15,11 +15,15 @@
             if($Fila[3] == 1){
                 if($Fila[4] == 0){
                     if($Fila[2] == 'U'){
-                        
-                        header('location: Menu_Usuario.html');
+                        session_start();
+                        $_SESSION['user'] = $User_Name;
+                        $_SESSION['tipo'] = $Fila[2];
+                        header('location: Menu_Usuario.php');
                     }else{
-
-                        header('location: Menu_Admin.html');
+                        session_start();
+                        $_SESSION['user'] = $User_Name;
+                        $_SESSION['tipo'] = $Fila[2];
+                        header('location: Menu_Admin.php');
                     }
                 }else{
                     echo "<script type='text/javascript'>alert('Cuenta Bloqueada');</script>";

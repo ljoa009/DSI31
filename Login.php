@@ -1,3 +1,12 @@
+<?php
+    if(isset($_SESSION['user'])){
+        if($_SESSION['tipo'] == 'U'){
+            header('location: Menu_Usuario.php');
+        }else{
+            header('location: Menu_Admin.php');
+        }
+    }else{
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -17,3 +26,6 @@
         </form>
     </body>
 </html>
+<?php
+    }
+?>

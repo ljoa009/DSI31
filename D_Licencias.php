@@ -1,19 +1,23 @@
 <?php
-    //Obtener datos
-    $IdLicencia=$_POST['IdLicencia'];
+    if(isset($_SESSION['user'])){
+        //Obtener datos
+        $IdLicencia=$_POST['IdLicencia'];
 
-    //Formando instrucción SQL
-    $SQL= "DELETE FROM LICENCIAS WHERE id ='$IdLicencia'";
+        //Formando instrucción SQL
+        $SQL= "DELETE FROM LICENCIAS WHERE id ='$IdLicencia'";
 
-    //Enviar consulta al SMDB
-    include("Controlador.php");
-    $Con = Conectar();
-    $ResultSet = Ejecutar($Con, $SQL);
-    Desconectar($Con);
+        //Enviar consulta al SMDB
+        include("Controlador.php");
+        $Con = Conectar();
+        $ResultSet = Ejecutar($Con, $SQL);
+        Desconectar($Con);
 
-    if($ResultSet==1){
-        print("Registro Eliminado");
+        if($ResultSet==1){
+            print("Registro Eliminado");
+        }else{
+            print("Registro No Eliminado");
+        }
     }else{
-        print("Registro No Eliminado");
+        header('location: Login.php');
     }
 ?>

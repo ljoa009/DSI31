@@ -1,3 +1,6 @@
+<?php
+    if(isset($_SESSION['user'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,3 +64,8 @@
     </nav>
 </body>
 </html>
+<?php
+    }else{
+        header('location: Login.php');
+    }
+?>

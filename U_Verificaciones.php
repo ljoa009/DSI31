@@ -1,3 +1,6 @@
+<?php
+    if(isset($_SESSION['user'])){
+?>
 <html>
 <html lang="es">
     <head>
@@ -111,3 +114,8 @@ if(isset($_POST['Folio'])){
 <?php endif; ?>
 
 </html>
+<?php
+    }else{
+        header('location: Login.php');
+    }
+?>
