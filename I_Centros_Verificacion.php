@@ -12,7 +12,7 @@
     $Servidor = "127.0.0.1";
     $Usuario = "root";
     $Password = "";
-    $BD = "controlvehicular31";
+    $BD = "controlvehicularfinal";
 
     $SQL = "INSERT INTO Centros_Verificacion (RazonSocial, Nombre, Telefono, Direccion)VALUES('$RazonSocial','$Nombre','$Telefono','$Direccion');";
    
