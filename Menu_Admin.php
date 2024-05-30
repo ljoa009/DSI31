@@ -1,187 +1,394 @@
 <?php
     session_start();
-    if(isset($_SESSION['user'])){
-?>
+    if(isset($_SESSION['user'])) {
+        if ($_SESSION['tipo'] == 'A') {
+            ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador de Base de Datos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        nav {
-            background-color: #333;
-            padding: 10px 10px;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        li {
-            display: inline-block;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        li a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        li a:hover {
-            background-color: #555;
-        }
-        .sub-menu {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            top: 100%;
-            left: 0;
-            width: 200px;
-            z-index: 1;
-        }
-        li:hover .sub-menu {
-            display: block;
-        }
-        .sub-menu li {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .sub-menu a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            padding: 5px 0;
-        }
-        .sub-menu a:hover {
-            background-color: #555;
-        }
-    </style>
+    <title>Menu</title>
+    <link rel="stylesheet" href="Sidebar/style.css">
 </head>
 <body>
-    <h1>Menú Administrador</h1>
-    <nav id="navbar">
-        <ul>
-            <li>
-                <a href="">Centros de Verificación</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Centros_Verificacion.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Centros_Verificacion.php">Consultar Datos</a></li>
-                    <li><a href="FD_Centros_Verificacion.php">Eliminar</a></li>
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+
+    <div class="barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                <span>Querétaro</span>
+            </div>
+            <button class="boton" onclick="cargarContenido('Form_GeneradorPDF.php')">
+                <ion-icon name="add-outline"></ion-icon>
+                <span>Generar PDF</span>
+            </button>
+        </div>
+
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a onclick="toggleSubMenu('submenu1')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Centros Verificacion</span>
+                    </a>
+                </li>
+                <ul id="submenu1" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Centros_Verificacion.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Centros_Verificacion.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Centros_Verificacion.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Centros_Verificacion.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Conductores</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Conductores.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Conductores.php">Consultar Datos</a></li>
-                    <li><a href="FD_Conductores.php">Eliminar</a></li>
+                
+                <li>
+                    <a onclick="toggleSubMenu('submenu2')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Conductores</span>
+                    </a>
+                </li>
+                <ul id="submenu2" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Conductores.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Conductores.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Conductores.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Conductores.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Direcciones</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Direcciones.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Direcciones.php">Consultar Datos</a></li>
-                    <li><a href="FD_Direcciones.php">Eliminar</a></li>
+                <li>
+                    <a onclick="toggleSubMenu('submenu3')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Direcciones</span>
+                    </a>
+                </li>
+                <ul id="submenu3" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Direcciones.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Direcciones.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Direcciones.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Direcciones.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
+                    </ul>
+                <li>
+                    <a onclick="toggleSubMenu('submenu4')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Licencias</span>
+                    </a>
+                </li>
+                <ul id="submenu4" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Licencias.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Licencias.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Licencias.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Licencias.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Licencias</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Licencias.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Licencias.php">Consultar Datos</a></li>
-                    <li><a href="FD_Licencias.php">Eliminar</a></li>
+                <li>
+                    <a onclick="toggleSubMenu('submenu5')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Multas</span>
+                    </a>
+                </li>
+                <ul id="submenu5" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Multas.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Multas.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Multas.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Multas.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Multas</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Multas.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Multas.php">Consultar Datos</a></li>
-                    <li><a href="FD_Multas.php">Eliminar</a></li>
+                <li>
+                    <a onclick="toggleSubMenu('submenu6')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Oficiales</span>
+                    </a>
+                </li>
+                <ul id="submenu6" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Oficiales.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Oficiales.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Oficiales.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Oficiales.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Oficiales</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Oficiales.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Oficiales.php">Consultar Datos</a></li>
-                    <li><a href="FD_Oficiales.php">Eliminar</a></li>
+                <li>
+                    <a onclick="toggleSubMenu('submenu7')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Propietarios</span>
+                    </a>
+                </li>
+                <ul id="submenu7" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Propietarios.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Propietarios.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Propietarios.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Propietarios.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Propietarios</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Propietarios.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Propietarios.php">Consultar Datos</a></li>
-                    <li><a href="FD_Propietario.php">Eliminar</a></li>
+                <li>
+                    <a onclick="toggleSubMenu('submenu8')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Tarjetas Circulacion</span>
+                    </a>
+                </li>
+                <ul id="submenu8" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Tarjetas_Circulacion.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Tarjetas_Circulacion.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Tarjetas_Circulacion.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Tarjetas_Circulacion.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Tarjetas de Circulación</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Tarjetas_Circulacion.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Tarjetas_Circulacion.php">Consultar Datos</a></li>
-                    <li><a href="FD_Tarjetas_Circulacion.php">Eliminar</a></li>
+                <li>
+                    <a onclick="toggleSubMenu('submenu9')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Tenencias</span>
+                    </a>
+                </li>
+                <ul id="submenu9" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Tenencias.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Tenencias.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Tenencias.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Tenencias.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Tenencias</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Tenencias.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Tenencias.php">Consultar Datos</a></li>
-                    <li><a href="FD_Tenencias.php">Eliminar</a></li>
+                <li>
+                    <a onclick="toggleSubMenu('submenu10')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Vehiculos</span>
+                    </a>
+                </li>
+                <ul id="submenu10" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Vehiculos.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Vehiculos.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Vehiculos.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Vehiculos.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Vehículos</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Vehiculos.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Vehiculos.php">Consultar Datos</a></li>
-                    <li><a href="FD_Vehiculos.php">Eliminar</a></li>
+                <li>
+                    <a onclick="toggleSubMenu('submenu11')">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Verificaciones</span>
+                    </a>
+                </li>
+                <ul id="submenu11" class="submenu">
+                    <li>
+                        <a onclick="cargarContenido('C_Verificaciones.php')">
+                            <span>Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('F_Verificaciones.php')">
+                            <span>Insertar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('U_Verificaciones.php')">
+                            <span>Update</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="cargarContenido('FD_Verificaciones.php')">
+                            <span>Borrar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="">Verificaciones</a>
-                <ul class="sub-menu">
-                    <li><a href="F_Verificaciones.php">Insertar</a></li>
-                    <li><a href="#">Actualizar</a></li>
-                    <li><a href="C_Verificaciones.php">Consultar Datos</a></li>
-                    <li><a href="FD_Verificaciones.php">Eliminar</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+            </ul>
+        </nav>
+
+        <div>
+            <div class="linea"></div>
+
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Dark Mode</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="usuario">
+                <img src="Sidebar/Jhampier.jpg" alt="">
+                <div class="info-usuario">
+                    <div class="nombre-email">
+                        <span class="nombre"><?php echo $_SESSION['user']; ?></span>
+                        <span class="email">Administrador</span>
+                    </div>
+                    <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <main>
+        <iframe id="contenedor" src="" frameborder="0"></iframe>
+    </main>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="Sidebar/script.js"></script>
 </body>
 </html>
-<?php
+        <?php
+        }else if ($_SESSION['tipo'] == 'U') {
+            header('location: Menu_Usuario.php');
+        }
     }else{
-        header('location: Login.php');
+        header('location: ../Login.php');
     }
 ?>
