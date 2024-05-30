@@ -87,9 +87,11 @@
                   $pdf->SetFont('Arial','',10);
                   $pdf->SetXY(15, $startY + 5); 
                   // Posiciona el cursor para el texto dentro del rectángulo
-                  $pdf->Cell(0, 12, 'Motivo de la infraccion: ' . $row['Motivo'], 0, 1);
+                  $pdf->Cell(0, 7, 'Motivo de la infraccion: ' . $row['Motivo'], 0, 1);
                   $pdf->SetX(15); 
                   $pdf->Cell(0, 7, 'Observaciones del Operativo: ' . $row['ObsPersonal'], 0, 1);
+                  $pdf->SetX(15); 
+                  $pdf->Cell(0, 7, 'Garantia: ' . $row['Garantia'], 0, 1);
                   // Ajustar la posición Y para evitar superposición con el siguiente elemento
                   $startY += 40;
 

@@ -8,7 +8,7 @@
         $conexion = Conectar();
 
         // Consulta a la base de datos para obtener los datos de las licencias
-        $sql = "SELECT * FROM vistalicencia";
+        $sql = "SELECT * FROM vistalicencia WHERE LicenciaId=4";
         $resultset = Ejecutar($conexion, $sql);
 
         $pdf = new FPDF('p','mm',array(54,85.6));
