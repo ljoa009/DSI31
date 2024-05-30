@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
         // Consulta a la base de datos para obtener los datos de las licencias
         $sql = "SELECT * FROM vistatc WHERE TarjetaCirculacionId = $idTarjetaCirculacion";
         $resultset = Ejecutar($conexion, $sql);
-        $Fila = mysqli_fetch_assoc($resultset); // Obtiene los datos como un array asociativo
+        $Fila = mysqli_fetch_assoc($resultset); 
         if (!$Fila || !is_array($Fila)) {
             die('Error: No se encontraron registros para el ID proporcionado.');
         }
@@ -73,8 +73,6 @@ if (isset($_SESSION['user'])) {
         $pdf->SetXY(160, 50);
         $pdf->Cell(0, 10, utf8_decode($modelo), 0, 1);
 
-        //$pdf->SetXY(10, 62);
-        //$pdf->Cell(0, 10, utf8_decode($localidad), 0, 1);
 
         $pdf->SetXY(80, 62);
         $pdf->Cell(0, 10, utf8_decode($marcalineasublinea), 0, 1);
@@ -82,14 +80,10 @@ if (isset($_SESSION['user'])) {
         $pdf->SetXY(160, 62);
         $pdf->Cell(0, 10, utf8_decode($operacion), 0, 1);
 
-        //$pdf->SetXY(10, 74);
-        //$pdf->Cell(0, 10, utf8_decode($municipio), 0, 1);
 
         $pdf->SetXY(160, 74);
         $pdf->Cell(0, 10, utf8_decode($NCI), 0, 1);
 
-        //$pdf->SetXY(160, 86);
-        //$pdf->Cell(0, 10, utf8_decode($placaant), 0, 1);
 
         $pdf->SetXY(10, 98);
         $pdf->Cell(0, 10, utf8_decode($cilindraje), 0, 1);
@@ -133,23 +127,20 @@ if (isset($_SESSION['user'])) {
         $pdf->SetXY(60, 148);
         $pdf->Cell(0, 10, utf8_decode($transmicion), 0, 1);
 
-        //$pdf->SetXY(120, 148);
-        //$pdf->Cell(0, 10, utf8_decode($rpa), 0, 1);
-
         $pdf->SetXY(160, 148);
         $pdf->Cell(0, 10, utf8_decode($nummotor), 0, 1);
 
         $pdf->SetXY(160, 160);
         $pdf->Cell(0, 10, utf8_decode($fabricacion), 0, 1);
 
+
         $pdf->Image('Imagenes/Fondo_1.png', 0, 170, 234, 5);
         $pdf->Image('Imagenes/LogosQro.png', 0, 175, 234, 35);
         $pdf->Image('Imagenes/QR.png', 232, 146, 65, 65);
-        $pdf->Image('Imagenes/Logos.jpg', 0, 0, 60, 30);
-        $pdf->Image('Imagenes/Bandera.png', 60, 10, 300, 10);
+        
 
-        $pdf->SetXY(60, 3);
-        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->SetXY(110, 15);
+        $pdf->SetFont('Arial', 'B', 20);
         $pdf->Cell(0, 5, 'TARJETA DE CIRCULACION', 0, 1);
 
         $pdf->Output('I', 'TarjetaCirculacion.pdf');
