@@ -16,9 +16,6 @@ if (isset($_SESSION['user'])) {
         if (!$Fila || !is_array($Fila)) {
             die('Error: No se encontraron registros para el ID proporcionado.');
         }
-
-if (!$Fila || !is_array($Fila)) {
-    die('Error: No se encontraron registros para el ID proporcionado.');
 }
 if (!isset($Fila['VerificacionDictamen'], $Fila['VerificacionLinea'], $Fila['VehiculoPlaca'], $Fila['VehiculoNoSerie'], $Fila['VehiculoClase'], $Fila['VehiculoCombustible'], $Fila['VehiculoCilindraje'], $Fila['VehiculoTipo'], $Fila['TarjetaMunicipio'], $Fila['VerificacionID'], $Fila['VerificacionFolio'], $Fila['VerificacionHoraEntrada'], $Fila['VerificacionHoraSalida'], $Fila['VerificacionMotivo'], $Fila['VerificacionFolioPrueba'], $Fila['VerificacionSemestre'], $Fila['VerificacionVigencia'], $Fila['VerificacionTecnico'])) {
     die('Error: Algunos campos requeridos no están presentes en el resultado de la consulta.');
