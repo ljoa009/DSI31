@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['user'])) {
     if (isset($_GET['id'])) {
-        $IdTarjetaCirculacion = $_GET['id'];
+        $idTarjetaCirculacion = $_GET['id'];
 
         require('fpdf.php');
         require('Controlador.php');
@@ -10,7 +10,7 @@ if (isset($_SESSION['user'])) {
         $conexion = Conectar();
 
         // Consulta a la base de datos para obtener los datos de las licencias
-        $sql = "SELECT * FROM vistatc WHERE Id = $IdTarjetaCirculacion";
+        $sql = "SELECT * FROM vistatc WHERE TarjetaCirculacionId = $idTarjetaCirculacion";
         $resultset = Ejecutar($conexion, $sql);
         $Fila = mysqli_fetch_assoc($resultset); // Obtiene los datos como un array asociativo
         if (!$Fila || !is_array($Fila)) {
@@ -33,7 +33,7 @@ if (isset($_SESSION['user'])) {
         $marcalineasublinea = 'Marca/Línea/Sublínea: ' . $Fila['Marca'];
         $operacion = 'Operación: ' . $Fila['Operacion'];
         //$municipio = 'Municipio: ' .
-        $municipio = 'Municipio: ' . $Fila['MUNICIPIO'];
+        //$municipio = 'Municipio: ' . $Fila['MUNICIPIO'];
         //$placaant = 'Placa Anterior: ' . $Fila['PLACAANT'];
         $NCI = 'NCI: ' . $Fila['Folio_2'];
         $cilindraje = 'Cilindraje: ' . $Fila['Cilindraje'];
