@@ -2,11 +2,9 @@
   session_start();
   if(isset($_SESSION['user'])){
 
-       
           require('fpdf.php');
           require('Controlador.php');
-          
-
+        
           $conexion = Conectar();
 
           // Consulta a la base de datos para obtener los datos de las multas
@@ -15,9 +13,10 @@
 
           $pdf = new FPDF('P', 'mm', array(216,350));
           $pdf->AddPage();
+         //$pdf->Image('Imagenes/FondoMulta.jpg', 0, 0, 216, 350);
           $pdf->SetFont('Arial', '', 8);
           $pdf->SetAutoPageBreak(true, 10);
-          $pdf->Image('Imagenes/Foto_Multa.jpeg',10,0,40,40);
+          $pdf->Image('Imagenes/Foto_Multa.png',10,0,40,40);
 
           // Establecer el encabezado fuera del recuadro
           $pdf->SetFont('Arial','B',20);
@@ -88,7 +87,7 @@
                   $pdf->SetFont('Arial','',10);
                   $pdf->SetXY(15, $startY + 5); 
                   // Posiciona el cursor para el texto dentro del rectángulo
-                  $pdf->Cell(0, 7, 'Motivo de la infraccion: ' . $row['Motivo'], 0, 1);
+                  $pdf->Cell(0, 12, 'Motivo de la infraccion: ' . $row['Motivo'], 0, 1);
                   $pdf->SetX(15); 
                   $pdf->Cell(0, 7, 'Observaciones del Operativo: ' . $row['ObsPersonal'], 0, 1);
                   // Ajustar la posición Y para evitar superposición con el siguiente elemento
