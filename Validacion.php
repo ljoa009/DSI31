@@ -23,7 +23,7 @@
                                 $_SESSION['user'] = $User_Name;
                                 $_SESSION['tipo'] = $Fila[2];
                                 header('location: Menu_Usuario.php');
-                            }else{
+                            }else if($Fila[2] == 'A'){
                                 session_start();
                                 $_SESSION['user'] = $User_Name;
                                 $_SESSION['tipo'] = $Fila[2];
