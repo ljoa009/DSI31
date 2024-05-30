@@ -1,38 +1,41 @@
 <?php
-    session_start();
-    if(isset($_SESSION['user'])){
-        require('fpdf.php');
+session_start();
+if (isset($_SESSION['user'])) {
+    if (isset($_GET['id'])) {
+        $idLicencia = $_GET['id'];
 
+        require('fpdf.php');
         require('Controlador.php');
 
         $conexion = Conectar();
 
         // Consulta a la base de datos para obtener los datos de las licencias
-        $sql = "SELECT * FROM vistalicencia";
+        $sql = "SELECT * FROM vistalicencia WHERE LicenciaId = $idLicencia";
         $resultset = Ejecutar($conexion, $sql);
 
-        $pdf = new FPDF('p','mm',array(54,85.6));
+        $pdf = new FPDF('p', 'mm', array(54, 85.6));
         $pdf->AddPage();
         $pdf->SetFont('Arial', '', 3);
         $pdf->SetAutoPageBreak(false, 0.3);
-        $pdf->Image('Imagenes/Fondo.png',0,0,60,90);
+        $pdf->Image('Imagenes/Fondo.png', 0, 0, 60, 90);
 
         // Escribir información en la tarjeta
-        $pdf->SetFont('Arial','B',8);
+        $pdf->SetFont('Arial', 'B', 8);
         $pdf->Text(12, 5, 'Estados Unidos Mexicanos');
-        $pdf->SetFont('Arial','B',5);
+        $pdf->SetFont('Arial', 'B', 5);
         $pdf->Text(12, 7, 'Poder Ejecutivo del Estado de Queretaro');
-        $pdf->SetFont('Arial','',5);
+        $pdf->SetFont('Arial', '', 5);
         $pdf->Text(12, 9, 'SECRETARIA DE');
-        $pdf->SetFont('Arial','B',5);
+        $pdf->SetFont('Arial', 'B', 5);
         $pdf->Text(27, 9, 'SEGURIDAD CIUDADANA');
-        $pdf->SetFont('Arial','B',5);
+        $pdf->SetFont('Arial', 'B', 5);
         $pdf->Text(13, 12, 'LICENCIA PARA CONDUCIR');
         $pdf->Ln(8);
 
         // Iterar sobre los resultados y generar las licencias
         if ($resultset->num_rows > 0) {
-            while($row = $resultset->fetch_assoc()) {
+            while ($row = $resultset->fetch_assoc()) {
+              
                 $pdf->Image('Imagenes/EscudoQro.png', 3, 2, 7, 0);
                 $pdf->Image('Imagenes/Foto.png',30, 13, 23, 0);
                 $pdf->SetFont('Arial','',3);
@@ -179,6 +182,7 @@
 
                 // Agregar un salto de línea entre cada licencia
                 $pdf->Ln(3);
+
             }
         } else {
             $pdf->Cell(0, 3, 'No se encontraron resultados', 0, 1);
@@ -187,10 +191,10 @@
         // Cerrar conexión y generar el PDF
         Desconectar($conexion);
         $pdf->Output();
-    }else{
-        header('location: Login.php');
+    } else {
+        echo "ID de Licencia no proporcionado.";
     }
-?>
-<?php
-
+} else {
+    header('Location: Login.php');
+}
 ?>
