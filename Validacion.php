@@ -12,24 +12,32 @@
     if($Existe == 1){
         $Fila = mysqli_fetch_row($ResultSet);
         if($Password == $Fila[1]){
-            if($Fila[3] == 1){
-                if($Fila[4] == 0){
-                    if($Fila[2] == 'U'){
-                        session_start();
-                        $_SESSION['user'] = $User_Name;
-                        $_SESSION['tipo'] = $Fila[2];
-                        header('location: Menu_Usuario.php');
+            if (isset($_FILES['hashfile']) && !empty($_FILES['hashfile']['tmp_name'])) {
+                $file_tmp_path = $_FILES['hashfile']['tmp_name'];
+                $hash = file_get_contents($file_tmp_path);
+                if(trim($hash) == $Fila[6]){
+                    if($Fila[3] == 1){
+                        if($Fila[4] == 0){
+                            if($Fila[2] == 'U'){
+                                session_start();
+                                $_SESSION['user'] = $User_Name;
+                                $_SESSION['tipo'] = $Fila[2];
+                                header('location: Menu_Usuario.php');
+                            }else{
+                                session_start();
+                                $_SESSION['user'] = $User_Name;
+                                $_SESSION['tipo'] = $Fila[2];
+                                header('location: Menu_Admin.php');
+                            }
+                        }else{
+                            echo "<script type='text/javascript'>alert('Cuenta Bloqueada');</script>";
+                        }
                     }else{
-                        session_start();
-                        $_SESSION['user'] = $User_Name;
-                        $_SESSION['tipo'] = $Fila[2];
-                        header('location: Menu_Admin.php');
+                        echo "<script type='text/javascript'>alert('Cuenta Inactiva');</script>";
                     }
-                }else{
-                    echo "<script type='text/javascript'>alert('Cuenta Bloqueada');</script>";
                 }
             }else{
-                echo "<script type='text/javascript'>alert('Cuenta Inactiva');</script>";
+                echo "<script type='text/javascript'>alert('Error al subir el archivo');</script>";
             }
         }else{
             echo "<script type='text/javascript'>alert('Tus datos de inicio son incorrectos');</script>";
@@ -40,7 +48,7 @@
     echo "
         <script type='text/javascript'>
             setTimeout(function() {
-                window.location.href = 'Login.html';
+                window.location.href = 'Login.php';
             }, 5);
         </script>
         ";
