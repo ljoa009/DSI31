@@ -29,12 +29,8 @@ if (isset($_SESSION['user'])) {
         $rfc = 'RFC: ' . $Fila['PropietarioRFC'];
         $numserie = 'Número de Serie: ' . $Fila['NoSerie'];
         $modelo = 'Modelo: ' . $Fila['Modelo'];
-        //$localidad = 'Localidad: ' . $Fila['DIRECCION'];
         $marcalineasublinea = 'Marca/Línea/Sublínea: ' . $Fila['Marca'];
         $operacion = 'Operación: ' . $Fila['Operacion'];
-        //$municipio = 'Municipio: ' .
-        //$municipio = 'Municipio: ' . $Fila['MUNICIPIO'];
-        //$placaant = 'Placa Anterior: ' . $Fila['PLACAANT'];
         $NCI = 'NCI: ' . $Fila['Folio_2'];
         $cilindraje = 'Cilindraje: ' . $Fila['Cilindraje'];
         $cvvvehicular = 'CVV Vehicular: ' . $Fila['NoSerie'];
@@ -49,7 +45,6 @@ if (isset($_SESSION['user'])) {
         $combustible = 'Combustible: ' . $Fila['Combustible'];
         $transmicion = 'Transmisión: ' . $Fila['Transmision'];
         $uso = 'Uso: ' . $Fila['Uso'];
-        //$rpa = 'RPA: ' . $Fila['RPA'];
         $movimiento = 'Movimiento: ' . $Fila['OE_Movimiento'];
         $nummotor = 'Número de Motor: ' . $Fila['NoMotor'];
         $fabricacion = 'Fabricación: HECHO EN MÉXICO';
