@@ -9,18 +9,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sistema de Gestión de Documentos</title>
-        <script>
-            function mostrarMotivoMulta() {
-                var documento = document.getElementById("documento").value;
-                var motivoMulta = document.getElementById("motivoMulta");
-
-                if (documento === "Multas") {
-                    motivoMulta.style.display = "block";
-                } else {
-                    motivoMulta.style.display = "none";
-                }
-            }
-        </script>
     </head>
 <body>
     <div class="container">

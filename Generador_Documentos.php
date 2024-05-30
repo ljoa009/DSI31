@@ -12,6 +12,9 @@ if (isset($_SESSION['user'])) {
             case 'Licencia':
                 header("Location: Generador_PDF_Licencia.php?id=$idDocumento");
                 break;
+            case 'Tarjeta de Circulacion':
+                header("Location: Generador_TC.php?id=$idDocumento");
+                break;
             // Agregar casos para otros documentos si es necesario
             default:
                 echo "Tipo de documento no válido.";
