@@ -7,6 +7,11 @@
     $SQL = "SELECT * FROM CUENTAS WHERE User_Name = '$User_Name';";
     $ResultSet = Ejecutar($Con, $SQL);
 
+    if ($Fila['5'] > 3) {
+      $SQL = "UPDATE cuentas SET Bloqueo='1' WHERE User_Name = '$User_Name';";
+      Ejecutar($Con, $SQL);
+    }
+    
     //Validar si el Usuario Existe
     $Existe = mysqli_num_rows($ResultSet);
     if($Existe == 1){
@@ -35,11 +40,18 @@
                     }else{
                         echo "<script type='text/javascript'>alert('Cuenta Inactiva');</script>";
                     }
+                }else{
+                  $SQL = "UPDATE cuentas SET Intentos='".($Fila['5'] + 1)."' WHERE User_Name = '$User_Name';";
+                  Ejecutar($Con, $SQL);
+                  echo "<script type='text/javascript'>alert('Tus datos de inicio son incorrectos');</script>";
                 }
             }else{
                 echo "<script type='text/javascript'>alert('Error al subir el archivo');</script>";
+                
             }
         }else{
+            $SQL = "UPDATE cuentas SET Intentos='".($Fila['5'] + 1)."' WHERE User_Name = '$User_Name';";
+            Ejecutar($Con, $SQL);
             echo "<script type='text/javascript'>alert('Tus datos de inicio son incorrectos');</script>";
         }
     }else{
