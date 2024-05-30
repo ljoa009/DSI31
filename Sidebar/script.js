@@ -43,7 +43,7 @@ cloud.addEventListener("click",()=>{
 
 function cargarContenido(link) {
     var iframe = document.getElementById('contenedor');
-   iframe.src = link;
+    iframe.src = link;
     return false;
 }
 
@@ -57,4 +57,13 @@ function toggleSubMenu(subMenuId) {
 
     var subMenu = document.getElementById(subMenuId);
     subMenu.classList.toggle('show');
+}
+
+function cerrarSesion() {
+    window.location.href = 'Destruir_sesion.php';
+}
+
+function toggleLogoutMenu() {
+    var logoutSubMenu = document.getElementById('logoutSubMenu');
+    logoutSubMenu.classList.toggle('show');
 }

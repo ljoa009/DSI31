@@ -367,17 +367,24 @@
                         <span class="nombre"><?php echo $_SESSION['user']; ?></span>
                         <span class="email">Administrador</span>
                     </div>
-                    <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                    <a onclick="toggleLogoutMenu()">
+                        <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                    </a>
+                    <ul id="logoutSubMenu" class="submenu">
+                        <li>
+                            <a onclick="cerrarSesion()">
+                                <span>Cerrar sesión</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-
     </div>
 
     <main>
         <iframe id="contenedor" src="" frameborder="0"></iframe>
     </main>
-
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -389,6 +396,6 @@
             header('location: Menu_Usuario.php');
         }
     }else{
-        header('location: ../Login.php');
+        header('location: Login.php');
     }
 ?>

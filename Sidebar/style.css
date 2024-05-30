@@ -366,3 +366,30 @@ main.min-main{
     background-color: var(--color-menu-hover);
     color: var(--color-texto-menu);
 }
+
+#logoutSubMenu {
+    display: none;
+    position: absolute;
+    background-color: var(--color-menu-hover);
+    border-radius: 10px;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+}
+
+#logoutSubMenu.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+#logoutSubMenu a {
+    color: var(--color-menu-hover-texto);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+#logoutSubMenu a:hover {
+    background-color: var(--color-menu-hover);
+    color: var(--color-texto-menu);
+}
