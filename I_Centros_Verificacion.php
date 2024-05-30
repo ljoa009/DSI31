@@ -22,14 +22,6 @@
             print("Registro no Insertado");
         }
         Desconectar($Con);
-        $SQL = "INSERT INTO Centros_Verificacion (RazonSocial, Nombre, Telefono, Direccion)VALUES('$RazonSocial','$Nombre','$Telefono','$Direccion');";
-    
-        include("Controlador.php");
-        $Con = Conectar();
-        $Resultset = Ejecutar($Con, $SQL);
-        if($Resultset == 1){
-            print("Registro Insertado");
-        }
     }else{
         header('location: Login.php');
     }
