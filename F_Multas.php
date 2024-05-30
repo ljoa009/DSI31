@@ -9,6 +9,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <h2>Inserción de Datos</h2>
+    
     <form method="get" action="I_Multas.php">
         <label>Folio: </label>
         <input type="number" id="Folio" name="Folio">

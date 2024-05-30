@@ -9,6 +9,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <h2>Eliminacion de Datos</h2>
+    
     <form method="post" action="D_Tarjetas_Circulacion.php">
         <label>Eliminar Tarjetas de Circulación</label>
         </p>

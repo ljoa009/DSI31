@@ -8,7 +8,9 @@
         <link rel="stylesheet" href="CSS/style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head> 
+    </head>
+    <h2>Inserción de Datos</h2>
+    
     <form method="post" action="I_Verificaciones.php">
         <label>Folio: </label>
         <input type="number" id="Folio" name="Folio">

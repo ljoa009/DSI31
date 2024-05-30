@@ -8,6 +8,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <h2>Consultar Datos</h2>
+    
     <form action="C_Tenencias.php">
     <label>Atributo que desea buscar: </label>
         <select id="Atributo" name="Atributo">

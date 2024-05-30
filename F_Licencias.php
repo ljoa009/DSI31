@@ -9,6 +9,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <h2>Inserción de Datos</h2>
+    
     <form method="get" action="I_Licencias.php">
         <label>Número de Licencia: </label>
         <input type="text" id="NoLicencia" name="NoLicencia">

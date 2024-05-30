@@ -9,6 +9,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <h2>Inserción de Datos</h2>
+    
     <form method="get" action="I_Conductores.php">
         <label>Nombre: </label>
         <input type="text" id="Nombre" name="Nombre">

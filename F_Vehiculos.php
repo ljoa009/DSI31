@@ -9,6 +9,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <h2>Inserción de Datos</h2>
+    
   <form method="post" action="I_Vehiculos.php">
     <label> Número de Serie: </label>
     <input type="text" id="NoSerie" name="NoSerie">
