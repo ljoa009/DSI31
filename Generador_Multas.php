@@ -1,41 +1,43 @@
 <?php
-  session_start();
-  if(isset($_SESSION['user'])){
+session_start();
+if (isset($_SESSION['user'])) {
+    if (isset($_GET['id'])) {
+        $idMulta = $_GET['id'];
 
-          require('fpdf.php');
-          require('Controlador.php');
-        
-          $conexion = Conectar();
+        require('fpdf.php');
+        require('Controlador.php');
 
-          // Consulta a la base de datos para obtener los datos de las multas
-          $sql = "SELECT * FROM vistamulta WHERE MultaId=3";
-          $resultset = Ejecutar($conexion, $sql);
+        $conexion = Conectar();
 
-          $pdf = new FPDF('P', 'mm', array(216,350));
-          $pdf->AddPage();
-         //$pdf->Image('Imagenes/FondoMulta.jpg', 0, 0, 216, 350);
-          $pdf->SetFont('Arial', '', 8);
-          $pdf->SetAutoPageBreak(true, 10);
-          $pdf->Image('Imagenes/Foto_Multa.png',10,0,40,40);
+        // Consulta a la base de datos para obtener los datos de las multas
+        $sql = "SELECT * FROM vistamulta WHERE MultaId = $idMulta";
+        $resultset = Ejecutar($conexion, $sql);
 
-          // Establecer el encabezado fuera del recuadro
-          $pdf->SetFont('Arial','B',20);
-          $pdf->SetXY(50,15);
-          $pdf->Cell(0, 10, 'SECRETARIA DE SEGURIDAD CIUDADANA', 0, 1, 'L');
-          $pdf->SetFont('Arial','',20);
-          $pdf->SetX(50);
-          $pdf->Cell(0, 5, 'SUBSECRETARIA DE POLICIA ESTATAL', 0, 1, 'L');
-          $pdf->Ln(15);
+        $pdf = new FPDF('P', 'mm', array(216, 350));
+        $pdf->AddPage();
+        //$pdf->Image('Imagenes/FondoMulta.jpg', 0, 0, 216, 350);
+        $pdf->SetFont('Arial', '', 8);
+        $pdf->SetAutoPageBreak(true, 10);
+        $pdf->Image('Imagenes/Foto_Multa.png', 10, 0, 40, 40);
 
-          $pdf->SetFont('Arial','',9); // Ajusta el tamaño de la fuente según sea necesario
-          $pdf->SetX(10); // Ajusta el margen izquierdo según sea necesario
-          $pdf->MultiCell(0, 5, 'Con fundamento en los articulos 31 fraccion II de la Ley de Transito para el Estado de Queretaro y 6 fraccion II, inciso g) del Reglamento de la Ley de Transito para el Estado de Queretaro, se emite la presente boleta de infraccion: ', 0, 'L');
-          $pdf->Ln(10);
+        // Establecer el encabezado fuera del recuadro
+        $pdf->SetFont('Arial', 'B', 20);
+        $pdf->SetXY(50, 15);
+        $pdf->Cell(0, 10, 'SECRETARIA DE SEGURIDAD CIUDADANA', 0, 1, 'L');
+        $pdf->SetFont('Arial', '', 20);
+        $pdf->SetX(50);
+        $pdf->Cell(0, 5, 'SUBSECRETARIA DE POLICIA ESTATAL', 0, 1, 'L');
+        $pdf->Ln(15);
 
-          // Iterar sobre los resultados y generar las multas
-          if ($resultset->num_rows > 0) {
-              while($row = $resultset->fetch_assoc()) {
+        $pdf->SetFont('Arial', '', 9); // Ajusta el tamaño de la fuente según sea necesario
+        $pdf->SetX(10); // Ajusta el margen izquierdo según sea necesario
+        $pdf->MultiCell(0, 5, 'Con fundamento en los articulos 31 fraccion II de la Ley de Transito para el Estado de Queretaro y 6 fraccion II, inciso g) del Reglamento de la Ley de Transito para el Estado de Queretaro, se emite la presente boleta de infraccion: ', 0, 'L');
+        $pdf->Ln(10);
 
+        // Iterar sobre los resultados y generar las multas
+        if ($resultset->num_rows > 0) {
+            while ($row = $resultset->fetch_assoc()) {
+                
                   // Guardar la posición actual del Y
                   $startY = $pdf->GetY();
                   
@@ -120,17 +122,19 @@
                   $pdf->Cell(0, 10, 'Observaciones del Conductor: ' . $row['ObsConductor'], 0, 1);
                   // Ajustar la posición Y para evitar superposición con el siguiente elemento
                   $startY += 40;
-                   
-              }
-          } else {
-              $pdf->Cell(0, 10, 'No se encontraron resultados', 0, 1);
-          }
 
-          // Cerrar conexión y generar el PDF
-          Desconectar($conexion);
-          $pdf->Output();
+            }
+        } else {
+            $pdf->Cell(0, 10, 'No se encontraron resultados', 0, 1);
+        }
 
-    }else{
-        header('location: Login.php');
+        // Cerrar conexión y generar el PDF
+        Desconectar($conexion);
+        $pdf->Output();
+    } else {
+        echo "ID de Multa no proporcionado.";
     }
+} else {
+    header('Location: Login.php');
+}
 ?>
