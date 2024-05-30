@@ -11,7 +11,7 @@
     <title>Generador PDF</title>
 </head>
 <body>
-    <h2>Generador de PDF</h2>
+    <h1>Generador de PDF</h1>
     <form method="post" action="Generador_Documentos.php">
         <label>Documento: </label>
         <select id="Documento" name="Documento">
