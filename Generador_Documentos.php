@@ -15,7 +15,11 @@ if (isset($_SESSION['user'])) {
             case 'Tarjeta de Circulacion':
                 header("Location: Generador_TC.php?id=$idDocumento");
                 break;
-            // Agregar casos para otros documentos si es necesario
+            case 'Verificacion':
+                header("Location: Generador_TV.php?id=$idDocumento");
+                break;
+            
+            
             default:
                 echo "Tipo de documento no válido.";
         }

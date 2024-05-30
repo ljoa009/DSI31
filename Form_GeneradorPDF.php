@@ -18,7 +18,7 @@
             <option value="" disabled selected>Selecciona una opción</option>
             <option value="Tarjeta de Circulacion">Tarjeta de Circulacion</option>
             <option value="Licencia">Licencia</option>
-            <option value="Tenencia">Tenencia</option>
+            <option value="Tenencia">Verificacion</option>
             <option value="Multa">Multa</option>
         </select>
         <br>
