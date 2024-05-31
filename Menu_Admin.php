@@ -371,6 +371,11 @@
                         <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                     </a>
                     <ul id="logoutSubMenu" class="submenu">
+                    <li>
+                            <a onclick="cargarContenido('Register.php')">
+                                <span>Crear usuario</span>
+                            </a>
+                        </li>
                         <li>
                             <a onclick="cerrarSesion()">
                                 <span>Cerrar sesión</span>
